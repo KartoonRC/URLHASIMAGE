@@ -1,0 +1,14 @@
+function urlHasImage(url) {
+  try {
+    var response = UrlFetchApp.fetch(url, {muteHttpExceptions: true});
+    var contentType = response.getHeaders()["Content-Type"];
+    if (contentType && contentType.indexOf("image") !== -1) { 
+      return true;
+    } else {
+      return false;
+    }
+  } catch (e) {
+    Logger.log("Error: " + e.toString());
+    return false;
+  }
+}
